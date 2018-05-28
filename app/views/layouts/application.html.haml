@@ -8,10 +8,18 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-light.bg-light
-      = link_to "FrideRice", root_path, class: "navbar-brand"
-      - if signed_in?
-        = link_to current_user.name, "#"
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %button.navbar-toggler{ "aria-controls" => "navTrigger", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navTrigger", "data-toggle" => "collapse" }
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navTrigger
+        %ul.navbar-nav
+          %li.nav-item.active
+            = link_to "FrideRice", root_path, class: "nav-link"
+          %li.nav-item
+            = link_to "About", root_path, class: "nav-link"
+          - if signed_in?
+            %li.nav-item
+              = link_to "#{current_user.name}さん", "#", class: "nav-link"
       %button.btn.btn-primary{ "data-toggle" => "modal", "data-target" => "#addModal" } 新規追加
     .container
       = yield
