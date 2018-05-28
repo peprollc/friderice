@@ -1,11 +1,20 @@
-.card.mt-2
-  .card-body
-    %h5.card-title= shop.name
-    %h6.card-subtitle.mb-2.text-muted= shop.address
-    - if signed_in?
-      .row
-        .col-sm
-          %button.btn.btn-light
-            %i.fa.fa-thumbs-up
-          %button.btn.btn-light
-            %i.fa.fa-thumbs-down
+%div{ id: "shop-#{shop.id}" }
+  .card.mt-2
+    .card-body
+      %h5.card-title= shop.name
+      %h6.card-subtitle.mb-2.text-muted= shop.address
+      - if signed_in?
+        .row
+          .col-sm
+            - unless shop.vote_by?(current_user)
+              = form_with url: shop_favorites_path(shop) do |f|
+                = f.button fa_icon("thumbs-up"), class: "btn btn-light", type: "submit"
+              = form_with url: shop_unfavorites_path(shop) do |f|
+                = f.button fa_icon("thumbs-down"), class: "btn btn-light", type: "submit"
+            - else
+              - if shop.vote_favorite?(current_user)
+                %button.btn.btn-success= fa_icon("thumbs-up")
+                %button.btn.btn-light= fa_icon("thumbs-down")
+              - else
+                %button.btn.btn-light= fa_icon("thumbs-up")
+                %button.btn.btn-error= fa_icon("thumbs-down")

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180527173430) do
+ActiveRecord::Schema.define(version: 20180528155846) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "post_users", force: :cascade do |t|
     t.integer "user_id"
@@ -31,6 +38,13 @@ ActiveRecord::Schema.define(version: 20180527173430) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unfavorites", force: :cascade do |t|
+    t.integer "shop_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
