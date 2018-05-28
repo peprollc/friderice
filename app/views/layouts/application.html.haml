@@ -8,7 +8,28 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %nav.navbar.navbar-light.bg-light
       = link_to "FrideRice", root_path, class: "navbar-brand"
+      - if signed_in?
+        = link_to current_user.name, "#"
+      %button.btn.btn-primary{ "data-toggle" => "modal", "data-target" => "#addModal" } 新規追加
     .container
       = yield
+
+.modal.fade#addModal{ "aria-hidden" => "true" }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title 最強のチャーハンの店を追加する
+      .modal-content.p-2
+        = form_with model: ShopForm, url: shops_path do |f|
+          .input-group.mb-1
+            = f.label :username, class: "m-1"
+            = f.text_field :username, class: "form-control"
+          .input-group.mb-1
+            = f.label :shop_name, class: "m-1"
+            = f.text_field :shop_name, class: "form-control"
+          .input-group.mb-1
+            = f.label :address, class: "m-1"
+            = f.text_field :address, class: "form-control"
+          = f.submit "追加", class: "btn btn-primary"

@@ -5,6 +5,7 @@ class ShopsController < ApplicationController
   def create
     shop_form = ShopForm.new shop_params
     if shop_form.save
+      session[:user_id] = shop_form.user.id
       redirect_to root_path
     else
       render :new
