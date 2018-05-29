@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FriedRice Shops Web Service.
 
-Things you may want to cover:
+<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/k/kazumalab/20180529/20180529220716.jpg?1527599339" width="100%">
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+it is good taste.

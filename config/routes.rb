@@ -4,4 +4,7 @@ Rails.application.routes.draw do
     resources :favorites, only: :create
     resources :unfavorites, only: :create
   end
+
+  get "/about", to: "home#about"
+
 end
