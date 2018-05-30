@@ -1,0 +1,3 @@
+google_api:
+  place:
+    access_token: <%= ENV["GOOGLE_MAP_API_KEY"] %>
