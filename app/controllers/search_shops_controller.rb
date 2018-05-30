@@ -1,7 +1,8 @@
 class SearchShopsController < ApplicationController
   def create
-    shop_search_form = ShopSearchForm.new shop_search_form_params
+    shop_search_form = ::ShopSearchForm.new shop_search_form_params
     if shop_search_form.get
+      @shops = shop_search_form.build_shops
       respond_to do |format|
         format.js
       end

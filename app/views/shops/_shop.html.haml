@@ -3,18 +3,33 @@
     .card-body
       %h5.card-title= shop.name
       %h6.card-subtitle.mb-2.text-muted= shop.address
-      - if signed_in?
+      - if signed_in? && shop.persisted?
         .row
-          .col-sm
-            - unless shop.vote_by?(current_user)
+          - unless shop.vote_by?(current_user)
+            .col-sm-1
               = form_with url: shop_favorites_path(shop) do |f|
                 = f.button fa_icon("thumbs-up"), class: "btn btn-light", type: "submit"
+            .col-sm-1
               = form_with url: shop_unfavorites_path(shop) do |f|
                 = f.button fa_icon("thumbs-down"), class: "btn btn-light", type: "submit"
-            - else
-              - if shop.vote_favorite?(current_user)
+          - else
+            - if shop.vote_favorite?(current_user)
+              .col-sm-1
                 %button.btn.btn-success= fa_icon("thumbs-up")
+              .col-sm-1
                 %button.btn.btn-light= fa_icon("thumbs-down")
-              - else
+            - else
+              .col-sm-1
                 %button.btn.btn-light= fa_icon("thumbs-up")
+              .col-sm-1
                 %button.btn.btn-danger= fa_icon("thumbs-down")
+      - elsif !shop.persisted?
+        = form_with model: ShopForm, url: shops_path do |f|
+          .input-group.mb-2
+            - username = signed_in? ? current_user.name : ""
+            = f.text_field :username, value: username, class: "form-control", placeholder: "your nickname"
+          = f.hidden_field :name, value: shop.name
+          = f.hidden_field :address, value: shop.address
+          = f.hidden_field :latitude, value: shop.latitude
+          = f.hidden_field :longitude, value: shop.longitude
+          = f.submit "このチャーハンに決めた！", class: "btn btn-primary"

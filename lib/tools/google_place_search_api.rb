@@ -1,6 +1,6 @@
 require 'net/https'
 module GooglePlaceSearchApi
-  GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="
+  GOOGLE_PLACE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?language=ja&query="
 
   class << self
     def get(keyword)

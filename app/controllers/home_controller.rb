@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
-    ShopSearchForm.new
-    @shops = Shop.all
+    @shops = Shop.includes(:favorite_users, :unfavorite_users).all
   end
 
   def about
