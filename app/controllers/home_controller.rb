@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    ShopSearchForm.new
     @shops = Shop.all
   end
 
