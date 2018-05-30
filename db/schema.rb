@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180528183359) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: true
+    t.integer "status", default: 0
   end
 
   create_table "unfavorites", force: :cascade do |t|

@@ -2,15 +2,15 @@ class ShopForm
   include ActiveModel::Model
 
   attr_accessor :username
-  attr_accessor :shop_name, :address
+  attr_accessor :name, :address
   attr_writer :user
 
-  validates :username, :shop_name, :address, presence: true
+  validates :username, :name, :address, presence: true
 
   def save
     return false unless valid?
     ActiveRecord::Base.transaction do
-      user.shops.build(name: shop_name, address: address)
+      user.shops.build(name: name, address: address)
       user.save
     end
   end

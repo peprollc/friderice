@@ -16,6 +16,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop_form).permit(:username, :shop_name, :address)
+    params.require(:shop_form).permit(:username, :name, :address)
   end
 end

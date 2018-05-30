@@ -1,0 +1,11 @@
+AllCops:
+  RunRailsCops: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
+
+Lint/Debugger:
+  Enabled: false

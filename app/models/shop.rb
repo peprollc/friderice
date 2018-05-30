@@ -6,6 +6,8 @@ class Shop < ApplicationRecord
   has_many :unfavorites
   has_many :unfavorite_users, through: :unfavorites, source: 'user'
 
+  validates :name, uniqueness: true
+
   after_save :limit_delete!
 
   enum status: { draft: 0, published: 1 }
