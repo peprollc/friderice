@@ -6,4 +6,11 @@ module SessionHelper
   def signed_in?
     current_user.present?
   end
+
+  def request_sign_in
+    unless signed_in?
+      flash[:error] = "店を投稿していただくといいねできるようになります！"
+      redirect_to root_path
+    end
+  end
 end

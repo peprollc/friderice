@@ -2,9 +2,9 @@ class Shop < ApplicationRecord
   DO_DRAFT_LIMIT_COUNT = 5
   has_many :images, class_name: 'ShopImage'
   has_many :favorites
-  has_many :favorite_users, through: :favorites, source: 'user'
+  has_many :favorite_users, through: :favorites, source: 'user', autosave: true
   has_many :unfavorites
-  has_many :unfavorite_users, through: :unfavorites, source: 'user'
+  has_many :unfavorite_users, through: :unfavorites, source: 'user', autosave: true
 
   validates :name, uniqueness: true
 

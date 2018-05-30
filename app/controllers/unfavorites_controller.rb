@@ -1,5 +1,6 @@
 class UnfavoritesController < ApplicationController
 
+  before_action :request_sign_in
   before_action :set_shop
 
   def create

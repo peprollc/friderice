@@ -9,9 +9,12 @@ require 'database_cleaner'
 
 ActiveRecord::Migration.maintain_test_schema!
 
+Dir[Rails.root.join("spec", "support", "*.rb")].each { |f| require f }
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
+  config.include ServiceSignIn
   config.use_transactional_fixtures = true
 
   config.before(:suite) do
