@@ -2,7 +2,7 @@
   .card.mt-2
     .card-body
       %h5.card-title= shop.name
-      %h6.card-subtitle.mb-2.text-muted= shop.address
+      %h6.card-subtitle.mb-2.text-muted= link_to shop.address, google_map_tag(shop.address + "+" + shop.name)
       - if signed_in? && shop.persisted?
         .row
           - unless shop.vote_by?(current_user)
