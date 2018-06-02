@@ -1,3 +1,7 @@
+github:
+  url: https://github.com/peprollc/friedrice
 google_api:
   place:
     access_token: <%= ENV["GOOGLE_MAP_API_KEY"] %>
+instagram:
+  url: https://www.instagram.com/explore/tags/%E3%83%81%E3%83%A3%E3%83%BC%E3%83%8F%E3%83%B3%E9%83%A8/
