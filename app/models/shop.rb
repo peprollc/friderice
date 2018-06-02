@@ -8,7 +8,7 @@ class Shop < ApplicationRecord
 
   validates :name, uniqueness: true
 
-  after_save :limit_delete!
+  after_save :limit_delete!, if: :published?
 
   enum status: { draft: 0, published: 1 }
 
